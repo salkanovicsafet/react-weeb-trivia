@@ -3,7 +3,7 @@
 }
 
 .intro {
-  height: 100vh;
+  height: 100%;
   font-family: Inter;
   font-style: normal;
   display: flex;
@@ -41,6 +41,12 @@
   height: 6.5rem;
 }
 
+.intro__btn:active {
+  background-color: #3a405c;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transform: translateY(1px);
+}
+
 .blobs {
   background-image: url(../images/blue\ blob.svg),
     url(../images/yellow\ blob.svg);
@@ -54,4 +60,8 @@
 
 .blobs--small {
   background-size: 30vh, 30vh;
+}
+
+.main {
+  height: 100vh;
 }
