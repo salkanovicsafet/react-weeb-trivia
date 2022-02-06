@@ -2,6 +2,7 @@ import { useState } from "react";
 import CheckButton from "./components/CheckButton";
 import Intro from "./components/Intro";
 import Question from "./components/Question";
+import Restart from "./components/Restart";
 
 export default function App() {
   const [isIntro, setIsintro] = useState(true);
@@ -20,7 +21,8 @@ export default function App() {
         <Question />
         <Question />
         <div className="action">
-          <CheckButton />
+          {/*<CheckButton />*/}
+          <Restart />
         </div>
       </div>
     </div>
