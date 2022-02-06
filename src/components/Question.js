@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 export default function Question(props) {
   useEffect(() => {
-    if ((correct = true)) {
+    if (props.isOver && selectedAnswer === indexOfCorrectAnswer) {
+      setCorrect(true);
       props.correct();
     }
   }, [props.isOver]);
@@ -16,15 +17,11 @@ export default function Question(props) {
 
   const [answers, setAnswers] = useState(groupAnswers);
   const [selectedAnswer, setSelectedAnswer] = useState(-1);
-  let correct;
+  const [correct, setCorrect] = useState(false);
 
   const indexOfCorrectAnswer = answers.findIndex(
     (x) => x === htmlDecode(props.correctAnswer)
   );
-
-  if (props.isOver && selectedAnswer === indexOfCorrectAnswer) {
-    correct = true;
-  }
 
   function htmlDecode(input) {
     var doc = new DOMParser().parseFromString(input, "text/html");

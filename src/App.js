@@ -28,35 +28,46 @@ export default function App() {
   }
 
   useEffect(() => {
-    fetch(
-      "https://opentdb.com/api.php?amount=5&category=31&difficulty=easy&type=multiple"
-    )
-      .then((response) => response.json())
-      .then((data) => setTrivia(data.results));
-  }, []);
+    if (trivia == "") {
+      fetch(
+        "https://opentdb.com/api.php?amount=5&category=31&difficulty=easy&type=multiple"
+      )
+        .then((response) => response.json())
+        .then((data) => setTrivia(data.results));
+    }
+  }, [isIntro]);
 
   function startQuiz() {
     setIsintro(false);
   }
 
   function addPoint() {
-    setPoints(points + 1);
+    setPoints((prevPoints) => prevPoints + 1);
   }
 
   function endGame() {
     setIsOver(true);
   }
 
+  function restartGame() {
+    setIsOver(false);
+    setIsintro(true);
+    setPoints(0);
+    setTrivia("");
+  }
+
   return (
     <div className={`main blobs ${isIntro ? "blobs--big" : "blobs--small"}`}>
       {isIntro && <Intro startQuiz={startQuiz} />}
-      <div className="container">
-        {!isIntro && questions}
-        <div className="action">
-          {!isOver && <CheckButton endGame={endGame} />}
-          {isOver && <Restart />}
+      {!isIntro && (
+        <div className="container">
+          {!isIntro && questions}
+          <div className="action">
+            {!isOver && <CheckButton endGame={endGame} />}
+            {isOver && <Restart restartGame={restartGame} points={points} />}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
