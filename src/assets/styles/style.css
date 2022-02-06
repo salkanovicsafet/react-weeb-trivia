@@ -1,0 +1,57 @@
+.body {
+  background-color: #f5f7fb;
+}
+
+.intro {
+  height: 100vh;
+  font-family: Inter;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro__title {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 3.906rem;
+  line-height: 4.625rem;
+  color: #293264;
+}
+
+.intro__description {
+  margin-top: 0.875rem;
+  font-weight: 300;
+  font-size: 2rem;
+  line-height: 2.375rem;
+  color: #293264;
+}
+
+.intro__btn {
+  margin-top: 3.625rem;
+  background: #4d5b9e;
+  border-radius: 15px;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2.375rem;
+  text-align: center;
+  color: #f5f7fb;
+  width: 24.125rem;
+  height: 6.5rem;
+}
+
+.blobs {
+  background-image: url(../images/blue\ blob.svg),
+    url(../images/yellow\ blob.svg);
+  background-position: left bottom, right top;
+  background-repeat: no-repeat;
+}
+
+.blobs--big {
+  background-size: 40vh, 40vh;
+}
+
+.blobs--small {
+  background-size: 30vh, 30vh;
+}
