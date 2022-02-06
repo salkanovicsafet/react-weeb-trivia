@@ -1,6 +1,6 @@
 export default function Question() {
   return (
-    <div className="questions-container">
+    <div className="question-container">
       <h3 className="question">
         In which country was the caesar salad invented?
       </h3>
@@ -14,6 +14,7 @@ export default function Question() {
           Le baguette oui oui je parles Français
         </button>
       </div>
+      <hr className="question__line" />
     </div>
   );
 }
