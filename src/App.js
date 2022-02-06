@@ -12,7 +12,11 @@ export default function App() {
   return (
     <div className={`main blobs ${isIntro ? "blobs--big" : "blobs--small"}`}>
       {isIntro && <Intro startQuiz={startQuiz} />}
-      <div className="questions">
+      <div className="container">
+        <Question />
+        <Question />
+        <Question />
+        <Question />
         <Question />
       </div>
     </div>

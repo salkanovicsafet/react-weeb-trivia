@@ -64,21 +64,26 @@
 }
 
 .main {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 }
 
+.container {
+  padding: 2rem 10%;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+}
+
 .questions-container {
-  padding: 2rem 0;
-  width: 80%;
-  margin: auto;
+  height: 8rem;
 }
 
 .question {
   font-family: Karla;
   font-weight: bold;
   font-size: 2rem;
-  line-height: 2.375rem;
+  line-height: 1.375rem;
   color: #293264;
 }
 
@@ -94,8 +99,8 @@
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
-  font-size: 1.313rem;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1rem;
   text-align: center;
   padding: 0.75rem 1rem;
   background-color: #f5f7fb;
