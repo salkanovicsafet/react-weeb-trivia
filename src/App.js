@@ -19,6 +19,11 @@ export default function App() {
       .then((data) => setTrivia(data.results));
   }, [isIntro]);
 
+  function htmlDecode(input) {
+    var doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.textContent;
+  }
+
   function startQuiz() {
     setIsintro(false);
     let newQuestions = trivia.map((x, index) => {
@@ -27,15 +32,15 @@ export default function App() {
           key={index}
           correctAnswer={x.correct_answer}
           incorrectAnswers={x.incorrect_answers}
-          question={x.question}
-          correct={correctAnswer}
+          question={htmlDecode(x.question)}
+          correct={addPoint}
         />
       );
     });
     setQuestions(newQuestions);
   }
 
-  function correctAnswer() {
+  function addPoint() {
     setPoints((prevPoints) => ++prevPoints);
   }
 
