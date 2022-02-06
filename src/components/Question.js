@@ -1,9 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Question(props) {
+  useEffect(() => {
+    if ((correct = true)) {
+      props.correct();
+    }
+  }, [props.isOver]);
+
+  function groupAnswers() {
+    let allAnswers = props.incorrectAnswers.map((x) => htmlDecode(x));
+    allAnswers.push(htmlDecode(props.correctAnswer));
+    shuffleArray(allAnswers);
+    return allAnswers;
+  }
+
   const [answers, setAnswers] = useState(groupAnswers);
   const [selectedAnswer, setSelectedAnswer] = useState(-1);
-  let correct = null;
+  let correct;
 
   const indexOfCorrectAnswer = answers.findIndex(
     (x) => x === htmlDecode(props.correctAnswer)
@@ -11,7 +24,6 @@ export default function Question(props) {
 
   if (props.isOver && selectedAnswer === indexOfCorrectAnswer) {
     correct = true;
-    props.correct();
   }
 
   function htmlDecode(input) {
@@ -24,13 +36,6 @@ export default function Question(props) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
-  }
-
-  function groupAnswers() {
-    const allAnswers = props.incorrectAnswers.map((x) => htmlDecode(x));
-    allAnswers.push(htmlDecode(props.correctAnswer));
-    shuffleArray(allAnswers);
-    return allAnswers;
   }
 
   function select(id) {

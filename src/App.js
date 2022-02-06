@@ -7,21 +7,13 @@ import Restart from "./components/Restart";
 export default function App() {
   const [isIntro, setIsintro] = useState(true);
   const [trivia, setTrivia] = useState("");
-  const [questions, setQuestions] = useState([]);
   const [points, setPoints] = useState(0);
   const [isOver, setIsOver] = useState(false);
 
-  useEffect(() => {
-    fetch(
-      "https://opentdb.com/api.php?amount=5&category=31&difficulty=easy&type=multiple"
-    )
-      .then((response) => response.json())
-      .then((data) => setTrivia(data.results));
-  }, [isIntro]);
+  let questions;
 
-  function startQuiz() {
-    setIsintro(false);
-    let newQuestions = trivia.map((x, index) => {
+  if (trivia != "") {
+    questions = trivia.map((x, index) => {
       return (
         <Question
           key={index}
@@ -33,21 +25,36 @@ export default function App() {
         />
       );
     });
-    setQuestions(newQuestions);
+  }
+
+  useEffect(() => {
+    fetch(
+      "https://opentdb.com/api.php?amount=5&category=31&difficulty=easy&type=multiple"
+    )
+      .then((response) => response.json())
+      .then((data) => setTrivia(data.results));
+  }, []);
+
+  function startQuiz() {
+    setIsintro(false);
   }
 
   function addPoint() {
-    setPoints((prevPoints) => ++prevPoints);
+    setPoints(points + 1);
+  }
+
+  function endGame() {
+    setIsOver(true);
   }
 
   return (
     <div className={`main blobs ${isIntro ? "blobs--big" : "blobs--small"}`}>
       {isIntro && <Intro startQuiz={startQuiz} />}
       <div className="container">
-        {questions}
+        {!isIntro && questions}
         <div className="action">
-          <CheckButton />
-          {/*<Reset />*/}
+          {!isOver && <CheckButton endGame={endGame} />}
+          {isOver && <Restart />}
         </div>
       </div>
     </div>
