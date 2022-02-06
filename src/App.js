@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CheckButton from "./components/CheckButton";
 import Intro from "./components/Intro";
 import Question from "./components/Question";
 
@@ -18,6 +19,9 @@ export default function App() {
         <Question />
         <Question />
         <Question />
+        <div className="action">
+          <CheckButton />
+        </div>
       </div>
     </div>
   );

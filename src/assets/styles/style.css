@@ -147,3 +147,31 @@
   height: 1px;
   background-color: #dbdef0;
 }
+
+.action {
+  display: flex;
+  justify-content: center;
+}
+
+.action__check-btn {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #f5f7fb;
+  background-color: #4d5b9e;
+  border-radius: 10px;
+  width: 15rem;
+  height: 4.375rem;
+  margin-top: 1.5rem;
+}
+
+.action__check-btn:hover {
+  background-color: #5664b3;
+  cursor: pointer;
+}
+
+.action__check-btn:active {
+  background-color: #3b4579;
+}

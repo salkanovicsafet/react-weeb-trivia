@@ -1,1 +1,3 @@
-export default function CheckButton() {}
+export default function CheckButton() {
+  return <button className="action__check-btn">Check answers</button>;
+}
