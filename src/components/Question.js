@@ -1,4 +1,4 @@
-export default function Question() {
+export default function Question(props) {
   return (
     <div className="question-container">
       <h3 className="question">
